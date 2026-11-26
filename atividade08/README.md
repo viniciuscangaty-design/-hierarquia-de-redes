@@ -10,7 +10,11 @@ Simulação no **Cisco Packet Tracer** de uma rede hierárquica (Núcleo, Distri
 
 ## 2. Topologia
 
-![Topologia com Port-channels](docs/topologia.png)
+![Topologia no Packet Tracer com os Port-channels](topologia.png)
+
+Detalhamento das interfaces e dos grupos de agregação:
+
+![Mapa de interfaces e Port-channels](topologia-portas.png)
 
 | Camada | Dispositivos |
 |---|---|
@@ -215,6 +219,22 @@ Resultado: todos os canais aparecem como `SU` (Layer2, em uso) e todas as portas
 | DIST1 | Po2(SU) | Gig0/1, Gig1/1 (P) |
 | DIST2 | Po3(SU) | Gig0/1, Gig1/1 (P) |
 
+**CORE1**
+
+![show etherchannel summary - CORE1](etherchannel-core1.png)
+
+**CORE2**
+
+![show etherchannel summary - CORE2](etherchannel-core2.png)
+
+**DIST1**
+
+![show etherchannel summary - DIST1](etherchannel-dist1.png)
+
+**DIST2**
+
+![show etherchannel summary - DIST2](etherchannel-dist2.png)
+
 ## 9. Teste de conectividade ponta a ponta
 
 Caminho testado: **PC1 (ACC_1)** → DIST1 → Po2 → CORE1 → Po1 → CORE2 → Po3 → DIST2 → **PC4 (ACC_4)**.
@@ -232,3 +252,5 @@ tracert 192.168.10.13
 ```
 
 Como os switches operam em camada 2, o `tracert` não lista saltos intermediários entre os switches; o caminho é comprovado pelos canais ativos mostrados no `show etherchannel summary`.
+
+![Ping do PC1 para o PC4](ping-pc1-pc4.png)
